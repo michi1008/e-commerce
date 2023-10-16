@@ -57,3 +57,7 @@ table th {
   width: 4rem;
   margin-right: 1rem;
 }
+
+.fixed-card {
+  height: 10rem; 
+}

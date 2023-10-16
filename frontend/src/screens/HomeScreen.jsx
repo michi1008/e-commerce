@@ -28,7 +28,8 @@ const HomeScreen = () => {
         <Col md={4}>
           <div>
           <h1>Digital Collage</h1>
-          <p> These unique and eclenctic artworks are created by assembling a collection of images, graphics and text tinto a visually compelling composition.</p>
+          <p> These unique and eclectic artworks are created by assembling a collection of images, graphics and text into a visually compelling composition.</p>
+          <p> Print out the digital art in "18 x 24" inches ("45.72 x 60.96" cm) and get it delivered to your home!!</p>
         </div>
         </Col>
         </Row>
@@ -45,9 +46,9 @@ const HomeScreen = () => {
           {error?.data?.message || error.error}
         </Message>
       ) : (
-        <div style={{marginTop:"3rem"}}>
-          <h1>Latest Products</h1>
-          <Row>
+        <div style={{marginTop: "5rem"}} >
+          <h1  >Latest Products</h1>
+          <Row className="d-flex align-items-stretch" >
             {data.products.map((product) => (
               <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                 <Product product={product} />

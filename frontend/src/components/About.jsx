@@ -8,30 +8,32 @@ const About = () => {
     <>
       <div>
         <Row>
-          <h1>About Artist</h1>
+          <h1 style={{margin: "3rem"}}>About Artist</h1>
         </Row>
         <Row>
+        <Col md={6}>
           <img
             src={aboutImg}
             alt="profile_picture"
-            style={{ width: "40rem", margin: "3rem" }}
+            style={{ width: "35rem" }}
           />
-        </Row>
-        <Row>
+        </Col>
+        <Col md={6}>
           <h5>
             Ken Lange is a digital artist, guitarist, poet, singer/songwriter.
+            <br></br>
             He has an Associate of Arts in Music, and Bachelor of Arts in
-            Linguistics and follows a creative life charged with art, music, and
+            Linguistics and follows a creative life charged with art, music, <br></br>and
             the pursuit of any medium possible to convey his personal vision and
             live the principle that life itself is art.
             <br />
             <br /> He not only writes music and poetry, but also paints and does
             photography, graphic design and web design.Ken was born in San
-            Diego, and has been creating art for as long as he can remember. In
-            the 3rd grade, he had a fascination with drawing mazes. The theme of
+            Diego, <br></br>and has been creating art for as long as he can remember. In
+            the 3rd grade, he had a fascination with drawing mazes. <br></br>The theme of
             patterns and lines continued into his high school drawings, but
-            became more complex during that time. This is also when he started
-            painting with tempra and watercolors.In recent years, he has been
+            became more complex during that time. <br></br>This is also when he started
+            painting with tempra and watercolors.In recent years,<br></br> he has been
             making digital art collages, combining Facebook photos of friends,
             his own photos and paintings, and various Photoshop effects to
             create visually unique and stunning pieces.
@@ -40,28 +42,7 @@ const About = () => {
             Ken currently lives in the San Francisco Bay Area and works in the
             tech industry, and travels the world to find inspiration.
           </h5>
-        </Row>
-      </div>
-      <div style={{marginTop: "2rem"}}>
-        <Row>
-          <h1>About Service</h1>
-        </Row>
-        <Row>
-          <Col md={1}>
-          <img
-            src={serviceImg}
-            alt="service"
-            style={{ width: "4rem", color: "#8a949e"}}
-          />
-          </Col>
-          
-       <Col md={11}>
-          <h5>
-            {" "}
-            Print out the digital art in your favorite size and get it delivered
-            to your home!!
-          </h5>
-          </Col>
+        </Col>
         </Row>
       </div>
     </>

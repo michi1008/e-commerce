@@ -31,7 +31,7 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg="primary" variant="dark" expand="lg" collapseOnSelect>
+      <Navbar className='bg-dark' variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <Nav className="mr-auto">
           <LinkContainer to="/">
@@ -41,7 +41,7 @@ const Header = () => {
                 alt="ProShop"
                 style={{ width: "5rem", marginRight: "1rem" }}
               />
-              KenDigitalArt
+              KenLangeDigitalArt
             </Navbar.Brand>
           </LinkContainer>
           </Nav>

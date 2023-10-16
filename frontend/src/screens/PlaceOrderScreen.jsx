@@ -16,9 +16,6 @@ const PlaceOrderScreen = () => {
 
   const [createOrder, { isLoading, error }] = useCreateOrderMutation();
 
-  const itemsPrice =  cart.cartItems.reduce(
-    (acc, item) => Number(acc + item.qty * item.priceBySize),0);
-
   useEffect(() => {
     if (!cart.shippingAddress.address) {
       navigate('/shipping');
@@ -34,7 +31,7 @@ const PlaceOrderScreen = () => {
         orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,
         paymentMethod: cart.paymentMethod,
-        itemsPrice,
+        itemsPrice: cart.itemsPrice,
         shippingPrice: cart.shippingPrice,
         taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
@@ -91,7 +88,8 @@ const PlaceOrderScreen = () => {
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ${item.priceBySize} = ${item.qty * item.priceBySize}
+                          {item.qty} x ${item.price} = $
+                          {(item.qty * (item.price * 100)) / 100}
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -110,7 +108,7 @@ const PlaceOrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>${itemsPrice.toFixed(2)}</Col>
+                  <Col>${cart.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>

@@ -1,24 +1,23 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
-import Message from "../../components/Message";
-import Loader from "../../components/Loader";
-import FormContainer from "../../components/FormContainer";
-import { toast } from "react-toastify";
+import { useState, useEffect } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Form, Button } from 'react-bootstrap';
+import Message from '../../components/Message';
+import Loader from '../../components/Loader';
+import FormContainer from '../../components/FormContainer';
+import { toast } from 'react-toastify';
 import {
   useGetProductDetailsQuery,
   useUpdateProductMutation,
   useUploadProductImageMutation,
-} from "../../slices/productsAPISlice";
+} from '../../slices/productsAPISlice';
 
 const ProductEditScreen = () => {
   const { id: productId } = useParams();
 
-  const [name, setName] = useState("");
-  const [price_small, setPriceSmall] = useState(0);
-  const [price_medium, setPriceMedium] = useState(0);
-  const [price_large, setPriceLarge] = useState(0);
-  const [image, setImage] = useState('')
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState(0);
+  const [image, setImage] = useState('');
+  const [description, setDescription] = useState('');
 
   const {
     data: product,
@@ -41,14 +40,13 @@ const ProductEditScreen = () => {
       await updateProduct({
         productId,
         name,
-        price_small,
-        price_medium,
-        price_large,
+        price,
         image,
+        description,
       }).unwrap(); // NOTE: here we need to unwrap the Promise to catch any rejection in our catch block
-      toast.success("Product updated");
+      toast.success('Product updated');
       refetch();
-      navigate("/admin/productlist");
+      navigate('/admin/productlist');
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
@@ -57,10 +55,9 @@ const ProductEditScreen = () => {
   useEffect(() => {
     if (product) {
       setName(product.name);
-      setPriceSmall(product.price_small);
-      setPriceMedium(product.price_medium);
-      setPriceLarge(product.price_large);
+      setPrice(product.price);
       setImage(product.image);
+      setDescription(product.description);
     }
   }, [product]);
 
@@ -78,7 +75,7 @@ const ProductEditScreen = () => {
 
   return (
     <>
-      <Link to="/admin/productlist" className="btn btn-light my-3">
+      <Link to='/admin/productlist' className='btn btn-light my-3'>
         Go Back
       </Link>
       <FormContainer>
@@ -87,46 +84,26 @@ const ProductEditScreen = () => {
         {isLoading ? (
           <Loader />
         ) : error ? (
-          <Message variant="danger">{error?.data?.message}</Message>
+          <Message variant='danger'>{error.data.message}</Message>
         ) : (
           <Form onSubmit={submitHandler}>
-            <Form.Group controlId="name" className="my-2">
+            <Form.Group controlId='name'>
               <Form.Label>Name</Form.Label>
               <Form.Control
-                type="name"
-                placeholder="Enter name"
+                type='name'
+                placeholder='Enter name'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="price" className="my-2">
-              <Form.Label>Price Small</Form.Label>
+            <Form.Group controlId='price'>
+              <Form.Label>Price</Form.Label>
               <Form.Control
-                type="number"
-                placeholder="Enter price"
-                value={price_small}
-                onChange={(e) => setPriceSmall(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId="price" className="my-2">
-              <Form.Label>Price Medium</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Enter price"
-                value={price_medium}
-                onChange={(e) => setPriceMedium(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId="price" className="my-2">
-              <Form.Label>Price Large</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Enter price"
-                value={price_large}
-                onChange={(e) => setPriceLarge(e.target.value)}
+                type='number'
+                placeholder='Enter price'
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
@@ -146,7 +123,21 @@ const ProductEditScreen = () => {
               {loadingUpload && <Loader />}
             </Form.Group>
 
-            <Button type="submit" variant="primary" className="my-2">
+            <Form.Group controlId='description'>
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter description'
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Button
+              type='submit'
+              variant='primary'
+              style={{ marginTop: '1rem' }}
+            >
               Update
             </Button>
           </Form>

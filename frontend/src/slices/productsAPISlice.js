@@ -1,18 +1,15 @@
-import { PRODUCTS_URL, UPLOAD_URL } from "../constants";
-import { apiSlice } from "./apiSlice";
+import { PRODUCTS_URL } from '../constants';
+import { apiSlice } from './apiSlice';
 
 export const productsAPISlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query({
       query: ({ keyword, pageNumber }) => ({
         url: PRODUCTS_URL,
-        params: {
-          keyword,
-          pageNumber,
-        },
+        params: { keyword, pageNumber },
       }),
-      providesTags: ["Product"],
       keepUnusedDataFor: 5,
+      providesTags: ['Products'],
     }),
     getProductDetails: builder.query({
       query: (productId) => ({
@@ -23,44 +20,44 @@ export const productsAPISlice = apiSlice.injectEndpoints({
     createProduct: builder.mutation({
       query: () => ({
         url: `${PRODUCTS_URL}`,
-        method: "POST",
+        method: 'POST',
       }),
-      invalidatesTags: ["Product"], // to stop cashing no need to reload
+      invalidatesTags: ['Product'],
     }),
     updateProduct: builder.mutation({
       query: (data) => ({
         url: `${PRODUCTS_URL}/${data.productId}`,
-        method: "PUT",
+        method: 'PUT',
         body: data,
       }),
-      invalidatesTags: ["Products"],
+      invalidatesTags: ['Products'],
     }),
     uploadProductImage: builder.mutation({
       query: (data) => ({
-        url: `${UPLOAD_URL}`,
-        method: "POST",
+        url: `/api/upload`,
+        method: 'POST',
         body: data,
       }),
     }),
     deleteProduct: builder.mutation({
       query: (productId) => ({
         url: `${PRODUCTS_URL}/${productId}`,
-        method: "DELETE",
+        method: 'DELETE',
       }),
-      providesTags: ["Product"],
+      providesTags: ['Product'],
     }),
     createReview: builder.mutation({
       query: (data) => ({
         url: `${PRODUCTS_URL}/${data.productId}/reviews`,
-        method: "POST",
+        method: 'POST',
         body: data,
       }),
-      invalidatesTags: ["Product"],
+      invalidatesTags: ['Product'],
     }),
     getTopProducts: builder.query({
       query: () => `${PRODUCTS_URL}/top`,
+      keepUnusedDataFor: 5,
     }),
-    keepUnusedDataFor: 5,
   }),
 });
 
@@ -74,4 +71,3 @@ export const {
   useCreateReviewMutation,
   useGetTopProductsQuery,
 } = productsAPISlice;
-// these are apiLice children.
