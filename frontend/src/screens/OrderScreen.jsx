@@ -84,19 +84,16 @@ const OrderScreen = () => {
 
   function createOrder(data, actions) {
     return actions.order
-    .create({
-      purchase_units: [
-        {
-          amount: { value: order.totalPrice },
-        },
-      ],
-      application_context: {
-        locale: 'en_US',
-      },
-    })
-    .then((orderID) => {
-      return orderID;
-    });
+      .create({
+        purchase_units: [
+          {
+            amount: { value: order.totalPrice },
+          },
+        ],
+      })
+      .then((orderID) => {
+        return orderID;
+      });
   }
 
   const deliverHandler = async () => {
