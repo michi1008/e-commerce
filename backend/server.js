@@ -35,12 +35,25 @@ app.get("/api/config/paypal", (req, res) =>
   res.send({ clientId: process.env.PAYPAL_CLIENT_ID })
 );
 
-const __dirname = path.resolve(); //set __dirname to current directory
-app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+if (process.env.NODE_ENV === 'production') {
+  const __dirname = path.resolve();
+  app.use('/uploads', express.static('/var/data/uploads'));
+  app.use(express.static(path.join(__dirname, '/frontend/build')));
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+  );
+} else {
+  const __dirname = path.resolve();
+  app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+  app.get('/', (req, res) => {
+    res.send('API is running....');
+  });
+}
 
 app.use(notFound);
 app.use(errorHandler);
 
 app.listen(port, () =>
-  console.log(`Server runnning on ${process.env.NODE_ENV} mode on port ${port}`)
+  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${port}`)
 );
