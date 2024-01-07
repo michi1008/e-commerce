@@ -185,7 +185,7 @@ const ProductScreen = () => {
                           <option value='5'>5 - Excellent</option>
                         </Form.Control>
                       </Form.Group>
-                      <Form.Group className='my-2' controlId='comment'>
+                      <Form.Group className='my-2 comment' controlId='comment'>
                         <Form.Label>Comment</Form.Label>
                         <Form.Control
                           as='textarea'

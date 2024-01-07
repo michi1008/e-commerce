@@ -12,14 +12,13 @@ const About = () => {
         </Row>
         <Row>
         <Col md={6}>
-          <img
+          <img className="about-image"
             src={aboutImg}
             alt="profile_picture"
-            style={{ width: "35rem" }}
           />
         </Col>
         <Col md={6}>
-          <h5>
+          <h5 className="about-text">
             Ken Lange is a digital artist, guitarist, poet, singer/songwriter.
             <br></br>
             He has an Associate of Arts in Music, and Bachelor of Arts in
@@ -39,7 +38,7 @@ const About = () => {
             create visually unique and stunning pieces.
             <br />
             <br />
-            Ken currently lives in the San Francisco Bay Area and works in the
+            Ken currently lives in the San Bay Area and works in the
             tech industry, and travels the world to find inspiration.
           </h5>
         </Col>

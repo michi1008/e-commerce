@@ -8,7 +8,6 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useGetProductsQuery } from "../slices/productsAPISlice";
 import { Image, Row, Col } from "react-bootstrap";
-import featuredImg from "../assets/Halong-Bay-Reinvisioned.jpg"
 
 const HomeScreen = () => {
   const { pageNumber, keyword } = useParams();
@@ -22,14 +21,11 @@ const HomeScreen = () => {
       {!keyword ? (
         <div style={{marginTop:"3rem"}}>
         <Row>
-        <Col md={8}>
-           <Image src={featuredImg} alt="profile_picture" style={{width:"100%"}}/>
-        </Col>
-        <Col md={4}>
+        <Col md={12}>
           <div>
           <h1>Digital Collage</h1>
-          <p> These unique and eclectic artworks are created by assembling a collection of images, graphics and text into a visually compelling composition.</p>
-          <p> Print out the digital art in "18 x 24" inches ("45.72 x 60.96" cm) and get it delivered to your home!!</p>
+          <h3> These unique and eclectic artworks are created by assembling a collection of images, graphics and text into a visually compelling composition.</h3>
+          <h3> Print out the digital art in "18 x 24" inches ("45.72 x 60.96" cm) and get it delivered to your home!!</h3>
         </div>
         </Col>
         </Row>

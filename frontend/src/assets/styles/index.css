@@ -37,19 +37,16 @@ table th {
   background: #f4f4f4;
   padding: 10px;
   border: 1px solid #ddd;
+  color: var(--bs-gray);
 }
 
 .review button {
   margin-top: 10px;
 }
 
-.carousel-caption {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+.card {
+  color: var(--bs-gray);
+  text-decoration: none;;
 }
 
 .img-logo {
@@ -60,4 +57,19 @@ table th {
 
 .fixed-card {
   height: 10rem; 
+}
+
+.about-text {
+  padding-left: 2rem;
+}
+
+.about-image {
+  width: 35rem;
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px rgba(0,0,0,8);
+}
+
+.login-resigter a{
+  color: white;
+  text-decoration: none;
 }

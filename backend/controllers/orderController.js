@@ -103,7 +103,7 @@ console.log(order)
     // check the correct amount was paid
     const paidCorrectAmount = order.totalPrice.toString() === value;
     if (!paidCorrectAmount) throw new Error('Incorrect amount paid');
-
+    console.log(paidCorrectAmount, value)
     order.isPaid = true;
     order.paidAt = Date.now();
     order.paymentResult = {

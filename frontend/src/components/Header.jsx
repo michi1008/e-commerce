@@ -31,7 +31,7 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar className='bg-dark' variant="dark" expand="lg" collapseOnSelect>
+      <Navbar className='header' variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <Nav className="mr-auto">
           <LinkContainer to="/">
@@ -49,7 +49,7 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <SearchBox />
-              <LinkContainer to="/cart">
+              <LinkContainer className="header-link" to="/cart">
                 <Nav.Link>
                   <FaShoppingCart /> Cart
                   {cartItems.length > 0 && (

@@ -201,11 +201,12 @@ body {
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
-  color: var(--bs-body-color);
+  color: var(--bs-white);
   text-align: var(--bs-body-text-align);
-  background-color: var(--bs-light-bg-subtle);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-color: #03040c;
+  background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 15l15 15H0V15zM15 0l15 15V0H15z' fill='%23625f66' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
 hr {
@@ -375,11 +376,11 @@ sup {
 }
 
 a {
-  color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+  color: rgba(var(--bs-white), var(--bs-link-opacity, 1));
   text-decoration: underline;
 }
 a:hover {
-  --bs-link-color-rgb: var(--bs-link-hover-color-rgb);
+  color: var(--bs-grey);
 }
 
 a:not([href]):not([class]),
