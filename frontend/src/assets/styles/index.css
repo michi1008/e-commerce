@@ -23,6 +23,13 @@ main {
   white-space: nowrap; /* Prevent wrapping */
 }
 
+.card-image {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
 table td,
 table th {
   text-align: center;
